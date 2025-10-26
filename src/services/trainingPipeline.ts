@@ -1,5 +1,3 @@
-// Training Pipeline for VeriMed Phase 3
-// This module handles ML model training, evaluation, and deployment
 
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';

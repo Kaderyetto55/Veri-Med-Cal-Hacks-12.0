@@ -1,5 +1,3 @@
-// TypeScript type definitions for VeriMed
-// This module defines core types and interfaces used throughout the application
 
 export interface User {
   id: string;

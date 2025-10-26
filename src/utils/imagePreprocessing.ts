@@ -1,5 +1,3 @@
-// Image Preprocessing Utilities for VeriMed Phase 3
-// This module handles image preprocessing for ML model training
 
 import * as ImageManipulator from 'expo-image-manipulator';
 
@@ -176,8 +174,7 @@ class ImagePreprocessingService {
   }
 
   private async normalizeImage(imageUri: string): Promise<number[][][]> {
-    // This would typically involve converting to tensor format
-    // For now, return a mock normalized array
+    // Mock normalized array for demonstration
     // In a real implementation, this would use TensorFlow.js
     const mockNormalizedData: number[][][] = [];
     

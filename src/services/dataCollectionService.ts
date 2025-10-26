@@ -1,5 +1,3 @@
-// Data Collection Service for VeriMed Phase 3
-// This service handles real-world data collection for ML model training
 
 import * as FileSystem from 'expo-file-system';
 import * as ImageManipulator from 'expo-image-manipulator';

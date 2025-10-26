@@ -1,5 +1,3 @@
-// Real-time Inference Service for VeriMed Phase 3
-// This module handles on-device ML inference for counterfeit detection
 
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';

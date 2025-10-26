@@ -1,5 +1,3 @@
-// Model Testing Service for VeriMed Phase 3
-// This module handles comprehensive testing and validation of ML models
 
 import { inferenceService } from './inferenceService';
 import { modelDeploymentService } from './modelDeployment';
@@ -353,8 +351,7 @@ class ModelTestingService {
     const startTime = Date.now();
     
     try {
-      // This is a simplified memory test
-      // In a real implementation, you'd use proper memory profiling
+      // Simplified memory test for demonstration
       const memoryUsage = Math.random() * 100; // Mock value
       const passed = memoryUsage < 50; // 50MB threshold
       const score = Math.max(0, 100 - memoryUsage * 2);

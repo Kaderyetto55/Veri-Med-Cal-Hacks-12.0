@@ -1,5 +1,3 @@
-// ML Service for VeriMed
-// This service handles machine learning operations for counterfeit detection
 
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';
@@ -17,8 +15,7 @@ class MLService {
       // Initialize TensorFlow
       await tf.ready();
       
-      // TODO: Load pre-trained models
-      // For now, we'll use mock predictions
+      // Mock predictions for demonstration
       this.isInitialized = true;
       console.log('ML Service initialized');
     } catch (error) {
@@ -33,8 +30,7 @@ class MLService {
     }
 
     try {
-      // TODO: Implement actual ML analysis
-      // For now, return mock predictions
+      // Mock analysis for demonstration
       return this.getMockPrediction(scanMode);
     } catch (error) {
       console.error('ML analysis failed:', error);
@@ -84,7 +80,7 @@ class MLService {
 
   async downloadModel(modelName: string): Promise<boolean> {
     try {
-      // TODO: Implement model downloading for offline use
+      // Mock model downloading for demonstration
       console.log(`Downloading model: ${modelName}`);
       await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate download
       return true;
@@ -95,7 +91,7 @@ class MLService {
   }
 
   async getAvailableModels(): Promise<string[]> {
-    // TODO: Return list of available models from server
+    // Mock model list for demonstration
     return [
       'packaging-detector-v1.0',
       'pill-recognizer-v1.0',
@@ -104,8 +100,7 @@ class MLService {
   }
 
   async preprocessImage(image: ScanImage): Promise<tf.Tensor> {
-    // TODO: Implement image preprocessing
-    // This would include resizing, normalization, etc.
+    // Mock image preprocessing for demonstration
     const tensor = tf.zeros([224, 224, 3]);
     return tensor;
   }

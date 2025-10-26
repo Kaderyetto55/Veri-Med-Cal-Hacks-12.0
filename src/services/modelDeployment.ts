@@ -1,5 +1,3 @@
-// Model Deployment Service for VeriMed Phase 3
-// This module handles model deployment, versioning, and A/B testing
 
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';

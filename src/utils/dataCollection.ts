@@ -1,5 +1,3 @@
-// Data Collection Utilities for VeriMed
-// This module handles synthetic data generation for training
 
 export interface MedicineData {
   id: string;

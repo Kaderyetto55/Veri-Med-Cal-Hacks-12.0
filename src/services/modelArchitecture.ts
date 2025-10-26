@@ -1,5 +1,3 @@
-// Model Architecture for VeriMed Phase 3
-// This module defines the CNN architecture for counterfeit detection
 
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';
