@@ -75,30 +75,28 @@ Home Dashboard**
     Expected: Comprehensive test results with scores
 
 ---
+Expected Behavior**
+
+What Should Work Perfectly**
+- **App loads** without crashes or errors
+- **Camera captures** high-quality photos
+- **ML analysis** completes within 5 seconds
+- **Navigation** works smoothly between screens
+- **UI is responsive** and professional-looking
+- **All buttons** and interactions work
+- **Data persistence** across app sessions
+
+ Mock Data (Expected)**
+- **ML Analysis**: Shows realistic mock confidence scores (70-100%)
+- **Authentication**: Uses placeholder system (no real Firebase)
+- **Training Data**: Synthetic data for demonstration purposes
+- **Model Results**: Simulated performance metrics
+- **Reports**: Mock data for testing interface
+
+ Known Limitations**
+- **ML Models**: Not yet trained (shows mock predictions)
+- **Firebase**: Not configured (uses mock authentication)
+- **Real Data**: Uses synthetic data for demonstration
+- **Offline**: Some features require internet connection
 
 
-
----
-
- **Cal Hacks 12.0 Demo Flow:**
-
-### **1. Introduction (30 seconds)**
-- "VeriMed is an AI-powered platform that detects counterfeit medicines using smartphone cameras"
-
-### **2. Live Demo (2-3 minutes)**
-- **Show app interface** and navigation
-- **Scan a real medicine** with camera
-- **Display AI analysis** results
-- **Show ML training** dashboard
-- **Demonstrate testing** suite
-
-### **3. Technical Highlights (1-2 minutes)**
-- **Real-time ML inference** on mobile
-- **Comprehensive data collection** system
-- **Professional training pipeline**
-- **Scalable architecture** for production
-
-### **4. Impact Statement (30 seconds)**
-- "This technology can save lives by preventing counterfeit medicine consumption, especially in developing countries"
-
----
