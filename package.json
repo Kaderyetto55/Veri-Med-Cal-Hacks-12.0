@@ -1,7 +1,11 @@
 {
   "name": "verimed",
-  "version": "1.0.0",
+  "version": "3.0.0",
+  "description": "AI-Powered Counterfeit Medicine Detection App - Cal Hacks 12.0",
   "main": "index.ts",
+  "keywords": ["medicine", "counterfeit", "detection", "ai", "ml", "healthcare", "cal-hacks"],
+  "author": "VeriMed Team - Cal Hacks 12.0",
+  "license": "MIT",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
