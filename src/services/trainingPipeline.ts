@@ -6,38 +6,7 @@ import '@tensorflow/tfjs-react-native';
 import { dataCollectionService } from './dataCollectionService';
 import { modelArchitecture } from './modelArchitecture';
 import { imagePreprocessingService } from '../utils/imagePreprocessing';
-
-export interface TrainingConfig {
-  modelType: 'packaging' | 'pill' | 'batchCode' | 'fusion';
-  epochs: number;
-  batchSize: number;
-  learningRate: number;
-  validationSplit: number;
-  dataAugmentation: boolean;
-  earlyStopping: boolean;
-  patience: number;
-}
-
-export interface TrainingProgress {
-  epoch: number;
-  totalEpochs: number;
-  loss: number;
-  accuracy: number;
-  validationLoss: number;
-  validationAccuracy: number;
-  status: 'training' | 'validation' | 'completed' | 'failed';
-}
-
-export interface ModelMetrics {
-  accuracy: number;
-  precision: number;
-  recall: number;
-  f1Score: number;
-  confusionMatrix: number[][];
-  rocAuc: number;
-  trainingTime: number;
-  modelSize: number;
-}
+import { TrainingConfig, TrainingProgress, ModelMetrics } from '../types';
 
 export interface TrainingResult {
   model: tf.LayersModel;

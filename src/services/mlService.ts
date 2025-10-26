@@ -4,22 +4,7 @@
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';
 import '@tensorflow/tfjs-platform-react-native';
-
-export interface MLPrediction {
-  isCounterfeit: boolean;
-  confidence: number;
-  packagingScore: number;
-  pillScore: number;
-  batchCodeScore: number;
-  recommendations: string[];
-}
-
-export interface ScanImage {
-  uri: string;
-  width: number;
-  height: number;
-  base64?: string;
-}
+import { MLPrediction, ScanImage } from '../types';
 
 class MLService {
   private model: tf.LayersModel | null = null;

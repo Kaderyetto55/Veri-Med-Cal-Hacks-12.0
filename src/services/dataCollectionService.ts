@@ -3,7 +3,8 @@
 
 import * as FileSystem from 'expo-file-system';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { Alert } from 'react-native';
+import { Alert, Platform } from 'react-native';
+import { ScanImage, DataCollectionStats } from '../types';
 
 export interface MedicineImage {
   id: string;
@@ -27,19 +28,10 @@ export interface MedicineImage {
   };
 }
 
-export interface DataCollectionStats {
-  totalImages: number;
-  authenticImages: number;
-  counterfeitImages: number;
-  packagingImages: number;
-  pillImages: number;
-  batchCodeImages: number;
-  averageQuality: number;
-  lastUpdated: Date;
-}
+// DataCollectionStats is now imported from types
 
 class DataCollectionService {
-  private collectionDir = `${FileSystem.documentDirectory}medicine_data/`;
+  private collectionDir = `${FileSystem.cacheDirectory}medicine_data/`;
   private stats: DataCollectionStats = {
     totalImages: 0,
     authenticImages: 0,

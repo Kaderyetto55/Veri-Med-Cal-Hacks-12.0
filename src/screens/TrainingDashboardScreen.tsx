@@ -16,6 +16,7 @@ import { RootStackParamList } from '../navigation/AppNavigator';
 import { trainingPipeline } from '../services/trainingPipeline';
 import { modelDeploymentService } from '../services/modelDeployment';
 import { dataCollectionService } from '../services/dataCollectionService';
+import { ModelVersion, PerformanceMetrics, TrainingProgress } from '../types';
 
 type TrainingDashboardScreenNavigationProp = StackNavigationProp<RootStackParamList, 'TrainingDashboard'>;
 
@@ -25,9 +26,9 @@ interface Props {
 
 export default function TrainingDashboardScreen({ navigation }: Props) {
   const [isTraining, setIsTraining] = useState(false);
-  const [trainingProgress, setTrainingProgress] = useState<any>(null);
-  const [modelVersions, setModelVersions] = useState<any[]>([]);
-  const [performanceMetrics, setPerformanceMetrics] = useState<any[]>([]);
+  const [trainingProgress, setTrainingProgress] = useState<TrainingProgress | null>(null);
+  const [modelVersions, setModelVersions] = useState<ModelVersion[]>([]);
+  const [performanceMetrics, setPerformanceMetrics] = useState<PerformanceMetrics[]>([]);
   const [dataStats, setDataStats] = useState<any>(null);
   const [selectedModel, setSelectedModel] = useState<'packaging' | 'pill' | 'batchCode' | 'fusion'>('packaging');
 

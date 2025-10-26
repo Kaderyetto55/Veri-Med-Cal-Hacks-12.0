@@ -11,6 +11,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
+import { ScanResult } from '../types';
 
 type ResultsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Results'>;
 
@@ -18,7 +19,7 @@ interface Props {
   navigation: ResultsScreenNavigationProp;
   route: {
     params: {
-      scanResult: any; // Will be properly typed later
+      scanResult: ScanResult;
     };
   };
 }
@@ -206,7 +207,7 @@ export default function ResultsScreen({ navigation, route }: Props) {
         
         <TouchableOpacity 
           style={[styles.actionButton, styles.scanAgainButton]}
-          onPress={() => navigation.navigate('Scan')}
+          onPress={() => navigation.navigate('Scan' as never)}
         >
           <Ionicons name="camera" size={20} color="white" />
           <Text style={styles.actionButtonText}>Scan Another</Text>

@@ -222,6 +222,15 @@ export default function ProfileScreen({ navigation }: Props) {
             navigation.navigate('TrainingDashboard');
           }}
         />
+        
+        <MenuItem
+          icon="flask"
+          title="Model Testing"
+          subtitle="Test and validate ML models"
+          onPress={() => {
+            navigation.navigate('ModelTesting');
+          }}
+        />
       </View>
 
       {/* Data & Privacy */}

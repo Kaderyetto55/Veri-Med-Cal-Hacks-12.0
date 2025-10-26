@@ -4,23 +4,7 @@
 import * as tf from '@tensorflow/tfjs';
 import '@tensorflow/tfjs-react-native';
 import * as FileSystem from 'expo-file-system';
-
-export interface ModelVersion {
-  id: string;
-  modelType: 'packaging' | 'pill' | 'batchCode' | 'fusion';
-  version: string;
-  accuracy: number;
-  size: number;
-  createdAt: Date;
-  isActive: boolean;
-  modelPath: string;
-  metrics: {
-    precision: number;
-    recall: number;
-    f1Score: number;
-    rocAuc: number;
-  };
-}
+import { ModelVersion } from '../types';
 
 export interface DeploymentConfig {
   modelType: 'packaging' | 'pill' | 'batchCode' | 'fusion';
@@ -361,7 +345,7 @@ class ModelDeploymentService {
   // Save model version
   private async saveModelVersion(model: tf.LayersModel, versionId: string): Promise<string> {
     try {
-      const modelPath = `${FileSystem.documentDirectory}models/${versionId}/`;
+      const modelPath = `${FileSystem.cacheDirectory}models/${versionId}/`;
       
       // Create directory
       await FileSystem.makeDirectoryAsync(modelPath, { intermediates: true });
@@ -380,7 +364,7 @@ class ModelDeploymentService {
   // Load model versions
   private async loadModelVersions(): Promise<void> {
     try {
-      const versionsPath = `${FileSystem.documentDirectory}model_versions.json`;
+      const versionsPath = `${FileSystem.cacheDirectory}model_versions.json`;
       const versionsInfo = await FileSystem.getInfoAsync(versionsPath);
       
       if (versionsInfo.exists) {
@@ -395,7 +379,7 @@ class ModelDeploymentService {
   // Save model versions
   private async saveModelVersions(): Promise<void> {
     try {
-      const versionsPath = `${FileSystem.documentDirectory}model_versions.json`;
+      const versionsPath = `${FileSystem.cacheDirectory}model_versions.json`;
       await FileSystem.writeAsStringAsync(
         versionsPath,
         JSON.stringify(this.modelVersions, null, 2)
@@ -426,7 +410,7 @@ class ModelDeploymentService {
   // Save performance metrics
   private async savePerformanceMetrics(): Promise<void> {
     try {
-      const metricsPath = `${FileSystem.documentDirectory}performance_metrics.json`;
+      const metricsPath = `${FileSystem.cacheDirectory}performance_metrics.json`;
       await FileSystem.writeAsStringAsync(
         metricsPath,
         JSON.stringify(this.performanceMetrics, null, 2)
