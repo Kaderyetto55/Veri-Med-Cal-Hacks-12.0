@@ -1,19 +1,19 @@
 # VeriMed - Counterfeit Medicine Detection App
 
-## 🏥 Project Overview
+ Project Overview
 
 VeriMed is a mobile-first platform that empowers consumers, healthcare workers, and pharmacies to detect counterfeit medications using smartphone cameras and AI/ML technology. The system aims to reduce the estimated 250,000+ annual deaths caused by fake medicines, particularly in developing countries where up to 70% of certain medications may be counterfeit.
 
-## 🎯 Key Objectives
+Key Objectives
 
 - Provide instant, accessible counterfeit detection via smartphone
 - Create a crowdsourced global database of counterfeit medicine reports
 - Enable offline functionality for areas with limited connectivity
 - Partner with pharmacies and health authorities for data validation
 
-## 🚀 Features
+ Features
 
-### Phase 1 (Current)
+ Phase 1 (Current)
 - ✅ React Native/Expo mobile app
 - ✅ Camera-based medicine scanning
 - ✅ User authentication and profiles
@@ -21,27 +21,27 @@ VeriMed is a mobile-first platform that empowers consumers, healthcare workers, 
 - ✅ Offline functionality
 - ✅ Modern, intuitive UI
 
-### Phase 2 (Planned)
+ Phase 2 (Planned)
 - 🔄 ML model development
 - 🔄 Computer vision for packaging analysis
 - 🔄 Pill recognition system
 - 🔄 Batch code validation
 - 🔄 Heatmap visualization
 
-## 🛠 Tech Stack
+ Tech Stack
 
-### Mobile App
+ Mobile App
 - **React Native** with **Expo** for rapid development
 - **TypeScript** for type safety
 - **React Navigation** for navigation
 - **Expo Camera** for image capture
 
-### Backend
+ Backend
 - **Firebase** for authentication and database
 - **Firestore** for data storage
 - **Firebase Storage** for images
 
-### ML/AI
+ ML?AI
 - **TensorFlow Lite** for on-device inference
 - **OpenCV** for image preprocessing
 - **Custom CNN models** for counterfeit detection
@@ -50,7 +50,7 @@ VeriMed is a mobile-first platform that empowers consumers, healthcare workers, 
 - **Google Maps API** for location services
 - **Heatmap visualization** for counterfeit reports
 
-## 📱 App Structure
+ App Structure
 
 ```
 src/
@@ -74,15 +74,15 @@ src/
     └── index.ts
 ```
 
-## 🚀 Getting Started
+ Getting Started
 
-### Prerequisites
+ Prerequisites
 - Node.js (v16 or higher)
 - npm or yarn
 - Expo CLI
 - iOS Simulator or Android Emulator (for testing)
 
-### Installation
+ Installation
 
 1. **Clone the repository**
    ```bash
@@ -112,14 +112,14 @@ src/
    npm run web
    ```
 
-## 🔧 Configuration
+ Configuration
 
-### Firebase Setup
+# Firebase Setup
 1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
 2. Enable Authentication and Firestore
 3. Update `src/services/firebase.ts` with your Firebase config
 
-### Environment Variables
+ Environment Variables
 Create a `.env` file in the root directory:
 ```
 FIREBASE_API_KEY=your_api_key
@@ -130,22 +130,22 @@ FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 FIREBASE_APP_ID=your_app_id
 ```
 
-## 📊 Data Collection Strategy
+##  Data Collection Strategy
 
-### Synthetic Data Generation
+Synthetic Data Generation
 For hackathon purposes, we generate synthetic data including:
 
 - **Packaging Analysis**: 50-100 images of real medicine boxes with subtle alterations
 - **Pill Recognition**: Using NIH Pill Image Recognition dataset
 - **Batch Code Validation**: OCR with Google ML Kit
 
-### Data Augmentation
+ Data Augmentation
 - Image rotation, brightness, blur
 - Color variations
 - Font and spelling modifications
 - Logo quality variations
 
-## 🤖 ML Model Development
+##  ML Model Development
 
 ### Model Architecture
 - **Packaging Detector**: CNN for packaging authenticity
@@ -158,7 +158,7 @@ For hackathon purposes, we generate synthetic data including:
 3. Model conversion to TensorFlow Lite
 4. On-device deployment
 
-## 📱 User Roles
+##  User Roles
 
 ### Consumer
 - Scan medicines for authenticity
@@ -175,28 +175,28 @@ For hackathon purposes, we generate synthetic data including:
 - Inventory management
 - Professional reporting tools
 
-## 🔒 Privacy & Security
+##  Privacy & Security
 
 - No personal health information stored
 - Local processing for sensitive data
 - Encrypted data transmission
 - GDPR compliant data handling
 
-## 🌍 Offline Functionality
+##  Offline Functionality
 
 - Core detection features work offline
 - Pre-downloaded ML models
 - Local data caching
 - Sync when connectivity available
 
-## 📈 Future Enhancements
+##  Future Enhancements
 
 - **Phase 3**: Advanced ML models
 - **Phase 4**: Blockchain verification
 - **Phase 5**: Global health authority integration
 - **Phase 6**: Real-time alert system
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -211,11 +211,12 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 This project was developed for Cal Hacks 12.0 with the goal of creating a real-world solution to combat counterfeit medicines and improve global health outcomes.
 
-## 📞 Contact
+## Contact
+
 
 For questions or support, please contact the development team.
 
 ---
 
-**VeriMed** - Fighting counterfeit medicines, one scan at a time. 🏥💊
+**VeriMed** - Fighting counterfeit medicines, one scan at a time. 
 

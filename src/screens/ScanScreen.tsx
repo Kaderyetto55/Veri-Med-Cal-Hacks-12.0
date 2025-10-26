@@ -1,203 +1,199 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  Dimensions,
-  ActivityIndicator,
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Alert,
+    Dimensions,
+    ActivityIndicator,
 } from 'react-native';
-import { Camera } from 'expo-camera';
+import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainTabParamList } from '../navigation/AppNavigator';
 import { RootStackParamList } from '../navigation/AppNavigator';
 
-type ScanScreenNavigationProp = BottomTabNavigationProp<MainTabParamList, 'Scan'> & 
-  StackNavigationProp<RootStackParamList>;
+type ScanScreenNavigationProp = BottomTabNavigationProp<MainTabParamList, 'Scan'> &
+    StackNavigationProp<RootStackParamList>;
 
 interface Props {
-  navigation: ScanScreenNavigationProp;
+    navigation: ScanScreenNavigationProp;
 }
 
 const { width, height } = Dimensions.get('window');
 
 export default function ScanScreen({ navigation }: Props) {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [cameraType, setCameraType] = useState<'back' | 'front'>('back');
-  const [isScanning, setIsScanning] = useState(false);
-  const [scanMode, setScanMode] = useState<'packaging' | 'pill' | 'batch_code' | 'auto'>('auto');
-  const cameraRef = useRef<Camera>(null);
+    const [permission, requestPermission] = useCameraPermissions();
+    const [cameraType, setCameraType] = useState<CameraType>('back');
+    const [isScanning, setIsScanning] = useState(false);
+    const [scanMode, setScanMode] = useState<'packaging' | 'pill' | 'batch_code' | 'auto'>('auto');
+    const cameraRef = useRef<CameraView>(null);
 
-  useEffect(() => {
-    getCameraPermissions();
-  }, []);
+    const handleScan = async () => {
+        if (!cameraRef.current) return;
 
-  const getCameraPermissions = async () => {
-    const { status } = await Camera.requestCameraPermissionsAsync();
-    setHasPermission(status === 'granted');
-  };
+        setIsScanning(true);
+        try {
+            // Take a picture using the new API
+            const photo = await cameraRef.current.takePictureAsync();
 
-  const handleScan = async () => {
-    if (!cameraRef.current) return;
+            // TODO: Implement actual ML scanning
+            // For now, simulate scanning process
+            await new Promise(resolve => setTimeout(resolve, 2000));
 
-    setIsScanning(true);
-    try {
-      // TODO: Implement actual ML scanning
-      // For now, simulate scanning process
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Simulate scan result
-      const mockResult = {
-        medicine: {
-          id: '1',
-          name: 'Aspirin 100mg',
-          manufacturer: 'Bayer',
-          batchCode: 'ABC123',
-          expiryDate: '2025-12-31',
-          isAuthentic: Math.random() > 0.3, // 70% chance of being authentic
-          confidence: Math.random() * 0.3 + 0.7, // 70-100% confidence
-          detectedAt: new Date(),
-        },
-        isCounterfeit: Math.random() > 0.7, // 30% chance of being counterfeit
-        confidence: Math.random() * 0.3 + 0.7,
-        analysisDetails: {
-          packagingScore: Math.random() * 0.3 + 0.7,
-          pillScore: Math.random() * 0.3 + 0.7,
-          batchCodeScore: Math.random() * 0.3 + 0.7,
-          overallScore: Math.random() * 0.3 + 0.7,
-        },
-        recommendations: [
-          'Verify batch code with manufacturer',
-          'Check packaging for spelling errors',
-          'Report if suspicious',
-        ],
-      };
+            // Simulate scan result
+            const mockResult = {
+                medicine: {
+                    id: '1',
+                    name: 'Aspirin 100mg',
+                    manufacturer: 'Bayer',
+                    batchCode: 'ABC123',
+                    expiryDate: '2025-12-31',
+                    isAuthentic: Math.random() > 0.3,
+                    confidence: Math.random() * 0.3 + 0.7,
+                    detectedAt: new Date(),
+                },
+                isCounterfeit: Math.random() > 0.7,
+                confidence: Math.random() * 0.3 + 0.7,
+                analysisDetails: {
+                    packagingScore: Math.random() * 0.3 + 0.7,
+                    pillScore: Math.random() * 0.3 + 0.7,
+                    batchCodeScore: Math.random() * 0.3 + 0.7,
+                    overallScore: Math.random() * 0.3 + 0.7,
+                },
+                recommendations: [
+                    'Verify batch code with manufacturer',
+                    'Check packaging for spelling errors',
+                    'Report if suspicious',
+                ],
+            };
 
-      navigation.navigate('Results', { scanResult: mockResult });
-    } catch (error) {
-      Alert.alert('Error', 'Failed to scan medicine. Please try again.');
-    } finally {
-      setIsScanning(false);
-    }
-  };
+            navigation.navigate('Results', { scanResult: mockResult });
+        } catch (error) {
+            Alert.alert('Error', 'Failed to scan medicine. Please try again.');
+        } finally {
+            setIsScanning(false);
+        }
+    };
 
-  const toggleCameraType = () => {
-    setCameraType(current => 
-      current === 'back' ? 'front' : 'back'
-    );
-  };
+    const toggleCameraType = () => {
+        setCameraType(current =>
+            current === 'back' ? 'front' : 'back'
+        );
+    };
 
-  const ModeButton = ({ mode, title, icon }: {
-    mode: 'packaging' | 'pill' | 'batch_code' | 'auto';
-    title: string;
-    icon: string;
-  }) => (
-    <TouchableOpacity
-      style={[
-        styles.modeButton,
-        scanMode === mode && styles.modeButtonActive
-      ]}
-      onPress={() => setScanMode(mode)}
-    >
-      <Text style={[
-        styles.modeButtonText,
-        scanMode === mode && styles.modeButtonTextActive
-      ]}>
-        {title}
-      </Text>
-    </TouchableOpacity>
-  );
-
-  if (hasPermission === null) {
-    return (
-      <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#2E7D32" />
-        <Text style={styles.loadingText}>Requesting camera permission...</Text>
-      </View>
-    );
-  }
-
-  if (hasPermission === false) {
-    return (
-      <View style={styles.centerContainer}>
-        <Text style={styles.errorText}>Camera permission denied</Text>
-        <TouchableOpacity style={styles.button} onPress={getCameraPermissions}>
-          <Text style={styles.buttonText}>Grant Permission</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  return (
-    <View style={styles.container}>
-      <Camera
-        style={styles.camera}
-        facing={cameraType}
-        ref={cameraRef}
-        ratio="16:9"
-      >
-        <View style={styles.overlay}>
-          {/* Top Controls */}
-          <View style={styles.topControls}>
-            <TouchableOpacity style={styles.controlButton} onPress={toggleCameraType}>
-              <Text style={styles.controlButtonText}>Flip</Text>
-            </TouchableOpacity>
-            <Text style={styles.scanTitle}>Scan Medicine</Text>
-            <TouchableOpacity style={styles.controlButton}>
-              <Text style={styles.controlButtonText}>Help</Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* Scan Modes */}
-          <View style={styles.modeContainer}>
-            <ModeButton mode="auto" title="Auto" icon="scan" />
-            <ModeButton mode="packaging" title="Packaging" icon="cube" />
-            <ModeButton mode="pill" title="Pill" icon="medical" />
-            <ModeButton mode="batch_code" title="Batch Code" icon="barcode" />
-          </View>
-
-          {/* Scan Area */}
-          <View style={styles.scanArea}>
-            <View style={styles.scanFrame}>
-              <View style={styles.corner} />
-              <View style={[styles.corner, styles.cornerTopRight]} />
-              <View style={[styles.corner, styles.cornerBottomLeft]} />
-              <View style={[styles.corner, styles.cornerBottomRight]} />
-            </View>
-            <Text style={styles.scanInstructions}>
-              Position medicine within the frame
+    const ModeButton = ({ mode, title, icon }: {
+        mode: 'packaging' | 'pill' | 'batch_code' | 'auto';
+        title: string;
+        icon: string;
+    }) => (
+        <TouchableOpacity
+            style={[
+                styles.modeButton,
+                scanMode === mode && styles.modeButtonActive
+            ]}
+            onPress={() => setScanMode(mode)}
+        >
+            <Text style={[
+                styles.modeButtonText,
+                scanMode === mode && styles.modeButtonTextActive
+            ]}>
+                {title}
             </Text>
-          </View>
+        </TouchableOpacity>
+    );
 
-          {/* Bottom Controls */}
-          <View style={styles.bottomControls}>
-            <TouchableOpacity style={styles.galleryButton}>
-              <Text style={styles.galleryButtonText}>Gallery</Text>
-            </TouchableOpacity>
-            
-            <TouchableOpacity
-              style={[styles.scanButton, isScanning && styles.scanButtonDisabled]}
-              onPress={handleScan}
-              disabled={isScanning}
+    if (!permission) {
+        return (
+            <View style={styles.centerContainer}>
+                <ActivityIndicator size="large" color="#2E7D32" />
+                <Text style={styles.loadingText}>Loading camera...</Text>
+            </View>
+        );
+    }
+
+    if (!permission.granted) {
+        return (
+            <View style={styles.centerContainer}>
+                <Text style={styles.errorText}>We need your permission to show the camera</Text>
+                <TouchableOpacity style={styles.button} onPress={requestPermission}>
+                    <Text style={styles.buttonText}>Grant Permission</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
+    return (
+        <View style={styles.container}>
+            <CameraView
+                style={styles.camera}
+                facing={cameraType}
+                ref={cameraRef}
             >
-              {isScanning ? (
-                <ActivityIndicator size="large" color="white" />
-              ) : (
-                <View style={styles.scanButtonInner} />
-              )}
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.flashButton}>
-              <Text style={styles.flashButtonText}>Flash</Text>
-            </TouchableOpacity>
-          </View>
+                <View style={styles.overlay}>
+                    {/* Top Controls */}
+                    <View style={styles.topControls}>
+                        <TouchableOpacity style={styles.controlButton} onPress={toggleCameraType}>
+                            <Text style={styles.controlButtonText}>Flip</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.scanTitle}>Scan Medicine</Text>
+                        <TouchableOpacity style={styles.controlButton}>
+                            <Text style={styles.controlButtonText}>Help</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/* Scan Modes */}
+                    <View style={styles.modeContainer}>
+                        <ModeButton mode="auto" title="Auto" icon="scan" />
+                        <ModeButton mode="packaging" title="Packaging" icon="cube" />
+                        <ModeButton mode="pill" title="Pill" icon="medical" />
+                        <ModeButton mode="batch_code" title="Batch Code" icon="barcode" />
+                    </View>
+
+                    {/* Scan Area */}
+                    <View style={styles.scanArea}>
+                        <View style={styles.scanFrame}>
+                            <View style={styles.corner} />
+                            <View style={[styles.corner, styles.cornerTopRight]} />
+                            <View style={[styles.corner, styles.cornerBottomLeft]} />
+                            <View style={[styles.corner, styles.cornerBottomRight]} />
+                        </View>
+                        <Text style={styles.scanInstructions}>
+                            Position medicine within the frame
+                        </Text>
+                    </View>
+
+                    {/* Bottom Controls */}
+                    <View style={styles.bottomControls}>
+                        <TouchableOpacity style={styles.galleryButton}>
+                            <Text style={styles.galleryButtonText}>Gallery</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={[styles.scanButton, isScanning && styles.scanButtonDisabled]}
+                            onPress={handleScan}
+                            disabled={isScanning}
+                        >
+                            {isScanning ? (
+                                <ActivityIndicator size="large" color="white" />
+                            ) : (
+                                <View style={styles.scanButtonInner} />
+                            )}
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.flashButton}>
+                            <Text style={styles.flashButtonText}>Flash</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </CameraView>
         </View>
-      </Camera>
-    </View>
-  );
+    );
 }
+
+// ... rest of your styles remain the same
+
 
 const styles = StyleSheet.create({
   container: {
