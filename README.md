@@ -6,11 +6,11 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-97.3%-3178C6.svg)](https://www.typescriptlang.org)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-4.22.0-FF6F00.svg)](https://tensorflow.org)
 
-## 🎯 Project Overview
+ Project Overview
 
 VeriMed is a comprehensive mobile-first platform that empowers consumers, healthcare workers, and pharmacies to detect counterfeit medications using smartphone cameras and advanced AI/ML technology. The system aims to reduce the estimated **250,000+ annual deaths** caused by fake medicines, particularly in developing countries where up to **70% of certain medications** may be counterfeit.
 
-### 🌟 Key Objectives
+ Key Objectives
 
 - **Instant Detection**: Provide real-time counterfeit detection via smartphone camera
 - **Global Database**: Create a crowdsourced database of counterfeit medicine reports
@@ -20,9 +20,9 @@ VeriMed is a comprehensive mobile-first platform that empowers consumers, health
 
 ---
 
-## ✨ Features
+ Features
 
-### 🚀 **Phase 1: Mobile Foundation** ✅ COMPLETE
+**Phase 1: Mobile Foundation** ✅ COMPLETE
 - **React Native/Expo** mobile application
 - **Camera-based** medicine scanning
 - **User authentication** and role-based profiles
@@ -30,14 +30,14 @@ VeriMed is a comprehensive mobile-first platform that empowers consumers, health
 - **Offline functionality** for remote areas
 - **Modern, intuitive UI/UX** design
 
-### 🧠 **Phase 2: Data Collection & ML Setup** ✅ COMPLETE
+ **Phase 2: Data Collection & ML Setup** ✅ COMPLETE
 - **Synthetic data generation** for training
 - **Real-world data collection** pipeline
 - **Image preprocessing** and augmentation
 - **Metadata management** system
 - **Export functionality** for ML training
 
-### 🤖 **Phase 3: ML Integration & Testing** ✅ COMPLETE
+**Phase 3: ML Integration & Testing** ✅ COMPLETE
 - **Real-time ML inference** on mobile devices
 - **Multi-model architecture** (packaging, pill, batch code, fusion)
 - **Comprehensive training pipeline** with progress tracking
@@ -47,7 +47,7 @@ VeriMed is a comprehensive mobile-first platform that empowers consumers, health
 
 ---
 
-## 🛠 Tech Stack
+ Tech Stack
 
 ### **Mobile Application**
 - **React Native** with **Expo** for rapid development
@@ -76,7 +76,7 @@ VeriMed is a comprehensive mobile-first platform that empowers consumers, health
 
 ---
 
-## 📱 App Architecture
+ App Architecture
 
 ```
 src/
@@ -112,16 +112,16 @@ src/
 
 ---
 
-## 🚀 Getting Started
+ Getting Started
 
-### **Prerequisites**
+ **Prerequisites**
 - **Node.js** (v16 or higher)
 - **npm** or **yarn**
 - **Expo CLI** (`npm install -g @expo/cli`)
 - **iOS Simulator** or **Android Emulator** (for testing)
 - **Expo Go** app on your mobile device
 
-### **Installation**
+ **Installation**
 
 1. **Clone the repository**
    ```bash
@@ -165,7 +165,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 🧠 ML Pipeline
+ ML Pipeline
 
 ### **Model Architecture**
 
@@ -207,21 +207,21 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 👥 User Roles
+ User Roles
 
-### **👤 Consumer**
+ Consumer**
 - **Scan medicines** for authenticity verification
 - **View scan history** and results
 - **Report suspicious** medicines
 - **Access basic** detection features
 
-### **🏥 Healthcare Worker**
+ Healthcare Worker**
 - **Enhanced scanning** capabilities
 - **Access verified reports** database
 - **Professional verification** tools
 - **Advanced analytics** and insights
 
-### **💊 Pharmacist**
+Pharmacist**
 - **Batch code verification** system
 - **Inventory management** tools
 - **Professional reporting** capabilities
@@ -229,7 +229,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 🔒 Privacy & Security
+Privacy & Security
 
 - **No Personal Health Information** stored
 - **Local Processing** for sensitive data
@@ -240,7 +240,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 📊 Data Collection Strategy
+Data Collection Strategy
 
 ### **Synthetic Data Generation**
 - **Packaging Analysis**: 50-100 images with subtle alterations
@@ -256,7 +256,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 🧪 Testing & Validation
+ Testing & Validation
 
 ### **Comprehensive Test Suite**
 - **Service Initialization** tests
@@ -275,7 +275,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 🌐 Offline Functionality
+Offline Functionality
 
 - **Core Detection Features** work without internet
 - **Pre-downloaded ML Models** for offline inference
@@ -285,7 +285,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 🚀 Future Enhancements
+ Future Enhancements
 
 ### **Phase 4: Advanced Features**
 - **Blockchain Verification** for medicine authenticity
@@ -301,7 +301,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 📈 Impact & Statistics
+ Impact & Statistics
 
 ### **Global Problem**
 - **250,000+ deaths** annually from counterfeit medicines
@@ -317,7 +317,7 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 🤝 Contributing
+Contributing
 
 1. **Fork the repository**
 2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
@@ -333,44 +333,13 @@ FIREBASE_APP_ID=your_app_id
 
 ---
 
-## 📄 License
+ License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🏆 Cal Hacks 12.0
+  Cal Hacks 12.0
 
 This project was developed for **Cal Hacks 12.0** with the goal of creating a real-world solution to combat counterfeit medicines and improve global health outcomes.
 
-### **Hackathon Achievements**
-- ✅ **Complete ML Pipeline** implementation
-- ✅ **Real-time Inference** on mobile devices
-- ✅ **Professional UI/UX** design
-- ✅ **Comprehensive Testing** suite
-- ✅ **Production-ready** codebase
-- ✅ **Scalable Architecture** for future development
-
----
-
-## 📞 Contact & Support
-
-- **GitHub Issues**: [Report bugs or request features](https://github.com/Kaderyetto55/Veri-Med-Cal-Hacks-12.0/issues)
-- **Email**: [Contact the development team](mailto:verimed@example.com)
-- **Documentation**: [Full documentation](https://github.com/Kaderyetto55/Veri-Med-Cal-Hacks-12.0/wiki)
-
----
-
-## 🙏 Acknowledgments
-
-- **Cal Hacks 12.0** for the platform and opportunity
-- **TensorFlow** team for ML framework
-- **Expo** team for React Native tooling
-- **Firebase** team for backend services
-- **Open source community** for inspiration and tools
-
----
-
-**VeriMed** - Fighting counterfeit medicines, one scan at a time. 🚀
-
-*Built with ❤️ for Cal Hacks 12.0*
