@@ -156,26 +156,49 @@ This guide explains how to collect high-quality training data for VeriMed's ML m
 
 **📋 **Daily Collection Routine:**
 
-**Morning (5 minutes):**
-- Take 2-3 packaging photos
-- Focus on different medicine types
-- Ensure good lighting
+Quick Start :
+Open VeriMed App → Profile → Data Collection
+Enable Training Mode
+Take 3 photos of any medicine you have:
+Packaging photo (front of box)
+Pill photo (individual pill)
+Batch code photo (lot number)
 
-**Afternoon (5 minutes):**
-- Take pill photos
-- Different angles and lighting
-- Include batch code photos
+Fill in metadata:
+Medicine name (e.g., "Aspirin 100mg")
+Manufacturer (e.g., "Bayer")
+Batch code (if visible)
+Mark as "Authentic"
+Rate photo quality (aim for 7+ out of 10)
+Submit data
 
-**Evening (5 minutes):**
-- Review and organize photos
-- Add missing metadata
-- Quality check all images
 
-**📊 **Weekly Goals:**
-- **Week 1**: 50 authentic medicine photos
-- **Week 2**: 50 more authentic photos
-- **Week 3**: 25 suspicious/counterfeit photos (if available)
-- **Week 4**: Review and quality check all data
+For the sake of Hackaton as we do not have enough time let's do this:
+100 authentic medicine photos
+ 25 suspicious/counterfeit photos
+ Review and quality check
+
+ Using the App for Data Collection:
+Training Mode Interface:
+Statistics dashboard
+Photo quality guidelines
+Metadata forms
+Export functionality
+
+Photo Quality Standards:
+Sharp focus (no blur)
+Good lighting (no shadows)
+Clean background
+Medicine fills frame
+Straight-on angle
+
+Metadata Requirements:
+Medicine name (exact spelling)
+Manufacturer
+Batch code
+User role (Consumer/Healthcare/Pharmacist)
+Quality score (1-10)
+Authentic/Suspicious label
 
 ---
 

@@ -15,6 +15,7 @@ import { MainTabParamList } from '../navigation/AppNavigator';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { inferenceService } from '../services/inferenceService';
 import { InferenceResult } from '../services/inferenceService';
+import * as ImagePicker from 'expo-image-picker';
 
 type ScanScreenNavigationProp = BottomTabNavigationProp<MainTabParamList, 'Scan'> &
     StackNavigationProp<RootStackParamList>;
@@ -34,6 +35,70 @@ export default function ScanScreen({ navigation }: Props) {
     const [inferenceResult, setInferenceResult] = useState<InferenceResult | null>(null);
     const [isInferenceReady, setIsInferenceReady] = useState(false);
     const cameraRef = useRef<CameraView>(null);
+    const pickImageFromGallery = async () => {
+        // Request media library permissions
+        const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+        if (permissionResult.granted === false) {
+            Alert.alert('Permission Required', 'Permission to access camera roll is required!');
+            return;
+        }
+
+        // Launch image library
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ['images'],
+            allowsEditing: true,
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            // Process the selected image
+            await processImage(result.assets[0].uri);
+        }
+    };
+
+    const processImage = async (imageUri: string) => {
+        setIsScanning(true);
+        try {
+            // TODO: Implement actual ML scanning
+            // For now, simulate scanning process
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Simulate scan result
+            const mockResult = {
+                medicine: {
+                    id: '1',
+                    name: 'Aspirin 100mg',
+                    manufacturer: 'Bayer',
+                    batchCode: 'ABC123',
+                    expiryDate: '2025-12-31',
+                    isAuthentic: Math.random() > 0.3,
+                    confidence: Math.random() * 0.3 + 0.7,
+                    detectedAt: new Date(),
+                },
+                isCounterfeit: Math.random() > 0.7,
+                confidence: Math.random() * 0.3 + 0.7,
+                analysisDetails: {
+                    packagingScore: Math.random() * 0.3 + 0.7,
+                    pillScore: Math.random() * 0.3 + 0.7,
+                    batchCodeScore: Math.random() * 0.3 + 0.7,
+                    overallScore: Math.random() * 0.3 + 0.7,
+                },
+                recommendations: [
+                    'Verify batch code with manufacturer',
+                    'Check packaging for spelling errors',
+                    'Report if suspicious',
+                ],
+            };
+
+            navigation.navigate('Results', { scanResult: mockResult });
+        } catch (error) {
+            Alert.alert('Error', 'Failed to scan medicine. Please try again.');
+        } finally {
+            setIsScanning(false);
+        }
+    };
+
 
     // Initialize inference service
     useEffect(() => {
@@ -276,7 +341,7 @@ export default function ScanScreen({ navigation }: Props) {
 
                     {/* Bottom Controls */}
                     <View style={styles.bottomControls}>
-                        <TouchableOpacity style={styles.galleryButton}>
+                        <TouchableOpacity style={styles.galleryButton} onPress={pickImageFromGallery}>
                             <Text style={styles.galleryButtonText}>Gallery</Text>
                         </TouchableOpacity>
 
