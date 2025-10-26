@@ -14,19 +14,19 @@ Key Objectives
  Features
 
  Phase 1 (Current)
-- ✅ React Native/Expo mobile app
-- ✅ Camera-based medicine scanning
-- ✅ User authentication and profiles
-- ✅ Counterfeit report system
-- ✅ Offline functionality
-- ✅ Modern, intuitive UI
+-  React Native/Expo mobile app
+-  Camera-based medicine scanning
+-  User authentication and profiles
+-  Counterfeit report system
+-  Offline functionality
+-  Modern, intuitive UI
 
  Phase 2 (Planned)
-- 🔄 ML model development
-- 🔄 Computer vision for packaging analysis
-- 🔄 Pill recognition system
-- 🔄 Batch code validation
-- 🔄 Heatmap visualization
+-  ML model development
+-  Computer vision for packaging analysis
+-  Pill recognition system
+-  Batch code validation
+-  Heatmap visualization
 
  Tech Stack
 
@@ -36,49 +36,15 @@ Key Objectives
 - **React Navigation** for navigation
 - **Expo Camera** for image capture
 
- Backend
-- **Firebase** for authentication and database
-- **Firestore** for data storage
-- **Firebase Storage** for images
-
- ML?AI
+ ML/AI
 - **TensorFlow Lite** for on-device inference
-- **OpenCV** for image preprocessing
 - **Custom CNN models** for counterfeit detection
-
-### Maps/Visualization
-- **Google Maps API** for location services
-- **Heatmap visualization** for counterfeit reports
-
- App Structure
-
-```
-src/
-├── components/          # Reusable UI components
-├── screens/            # Screen components
-│   ├── LoginScreen.tsx
-│   ├── RegisterScreen.tsx
-│   ├── HomeScreen.tsx
-│   ├── ScanScreen.tsx
-│   ├── ResultsScreen.tsx
-│   ├── ReportsScreen.tsx
-│   └── ProfileScreen.tsx
-├── navigation/         # Navigation configuration
-│   └── AppNavigator.tsx
-├── services/          # Business logic services
-│   ├── firebase.ts
-│   └── mlService.ts
-├── utils/             # Utility functions
-│   └── dataCollection.ts
-└── types/             # TypeScript type definitions
-    └── index.ts
-```
 
  Getting Started
 
  Prerequisites
 - Node.js (v16 or higher)
-- npm or yarn
+- npm
 - Expo CLI
 - iOS Simulator or Android Emulator (for testing)
 
@@ -107,27 +73,9 @@ src/
    
    # Android
    npm run android
-   
-   # Web
-   npm run web
    ```
 
  Configuration
-
-# Firebase Setup
-1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com)
-2. Enable Authentication and Firestore
-3. Update `src/services/firebase.ts` with your Firebase config
-
- Environment Variables
-Create a `.env` file in the root directory:
-```
-FIREBASE_API_KEY=your_api_key
-FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-FIREBASE_PROJECT_ID=your_project_id
-FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-FIREBASE_APP_ID=your_app_id
 ```
 
 ##  Data Collection Strategy
@@ -137,7 +85,6 @@ For hackathon purposes, we generate synthetic data including:
 
 - **Packaging Analysis**: 50-100 images of real medicine boxes with subtle alterations
 - **Pill Recognition**: Using NIH Pill Image Recognition dataset
-- **Batch Code Validation**: OCR with Google ML Kit
 
  Data Augmentation
 - Image rotation, brightness, blur
@@ -180,7 +127,6 @@ For hackathon purposes, we generate synthetic data including:
 - No personal health information stored
 - Local processing for sensitive data
 - Encrypted data transmission
-- GDPR compliant data handling
 
 ##  Offline Functionality
 
@@ -192,9 +138,7 @@ For hackathon purposes, we generate synthetic data including:
 ##  Future Enhancements
 
 - **Phase 3**: Advanced ML models
-- **Phase 4**: Blockchain verification
-- **Phase 5**: Global health authority integration
-- **Phase 6**: Real-time alert system
+- **Phase 4**: Real-time alert system
 
 ##  Contributing
 
@@ -203,18 +147,13 @@ For hackathon purposes, we generate synthetic data including:
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🏆 Cal Hacks 12.0
 
 This project was developed for Cal Hacks 12.0 with the goal of creating a real-world solution to combat counterfeit medicines and improve global health outcomes.
 
 ## Contact
 
-
-For questions or support, please contact the development team.
+For questions or support, please submit an issue.
 
 ---
 
