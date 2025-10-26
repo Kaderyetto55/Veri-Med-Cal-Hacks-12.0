@@ -12,6 +12,8 @@ import ReportsScreen from '../screens/ReportsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import DataCollectionScreen from '../screens/DataCollectionScreen';
+import TrainingDashboardScreen from '../screens/TrainingDashboardScreen';
 
 // Types
 export type RootStackParamList = {
@@ -21,6 +23,8 @@ export type RootStackParamList = {
   Results: {
     scanResult: any; // Will be properly typed later
   };
+  DataCollection: undefined;
+  TrainingDashboard: undefined;
 };
 
 export type MainTabParamList = {
@@ -125,6 +129,16 @@ export default function AppNavigator() {
           name="Results" 
           component={ResultsScreen} 
           options={{ title: 'Scan Results' }}
+        />
+        <Stack.Screen 
+          name="DataCollection" 
+          component={DataCollectionScreen} 
+          options={{ title: 'Data Collection' }}
+        />
+        <Stack.Screen 
+          name="TrainingDashboard" 
+          component={TrainingDashboardScreen} 
+          options={{ title: 'ML Training' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

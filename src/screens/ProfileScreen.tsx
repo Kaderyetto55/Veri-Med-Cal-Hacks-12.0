@@ -10,9 +10,11 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { MainTabParamList } from '../navigation/AppNavigator';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainTabParamList, RootStackParamList } from '../navigation/AppNavigator';
 
-type ProfileScreenNavigationProp = BottomTabNavigationProp<MainTabParamList, 'Profile'>;
+type ProfileScreenNavigationProp = BottomTabNavigationProp<MainTabParamList, 'Profile'> & 
+  StackNavigationProp<RootStackParamList>;
 
 interface Props {
   navigation: ProfileScreenNavigationProp;
@@ -195,6 +197,29 @@ export default function ProfileScreen({ navigation }: Props) {
           onPress={() => {
             // TODO: Navigate to change password
             console.log('Change password');
+          }}
+        />
+      </View>
+
+      {/* ML & Data Collection */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>ML & Data Collection</Text>
+        
+        <MenuItem
+          icon="camera"
+          title="Data Collection"
+          subtitle="Contribute to training data"
+          onPress={() => {
+            navigation.navigate('DataCollection');
+          }}
+        />
+        
+        <MenuItem
+          icon="layers"
+          title="ML Training Dashboard"
+          subtitle="Train and manage models"
+          onPress={() => {
+            navigation.navigate('TrainingDashboard');
           }}
         />
       </View>
